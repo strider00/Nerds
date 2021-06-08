@@ -1,0 +1,46 @@
+@font-face{
+  font-family: roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto");
+}
+
+body {
+  width: 1440px;
+  margin: auto;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+header, main {
+  padding:0px 120px;
+}
+
+li {
+  list-style: none;  
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu li {
+  margin-right: 50px;
+}
+
+h1 {
+  display: none;
+}
+
+.transform {
+  text-transform: uppercase;
+}

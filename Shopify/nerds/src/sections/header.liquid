@@ -1,0 +1,57 @@
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+  <header >
+    <nav class="main-nav">
+      <div class="logo">
+        <a href="{{ routes.root_url }}" class="logo__link" title="Интернет магазин Nerds"> 
+          {% if section.settings.logo != blank %}
+          {% capture image_size %}160x70{% endcapture %}
+          <img src="{{ section.settings.logo | img_url: image_size }}"
+               srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+               alt="{{ section.settings.logo.alt | default: shop.name }}"
+               itemprop="logo">
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </a>
+      </div>
+      
+
+      {%render 'main-nav', main_linklist: section.settings.main_linklist%}
+
+      <a href="/cart">
+        {% include 'cart-icon' %}
+        {{ 'layout.cart.title' | t }}
+        ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+      </a>
+    </nav>
+  </header>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 100,
+        "max": 250,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
